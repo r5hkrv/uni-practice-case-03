@@ -57,6 +57,10 @@ button:disabled {
 
 	border-radius: 0.25rem;
 
+	display: none;
+}
+
+.slider-image.is-selected {
 	display: inline-block;
 }
 
@@ -77,7 +81,7 @@ button:disabled {
 }
 
 .slider-arrow:hover {
-	background-color: oklch(0 0 0 / 0.025);
+	background-color: oklch(0 0 0 / 0.05);
 }
 
 .slider-counter {

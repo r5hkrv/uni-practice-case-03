@@ -7,25 +7,96 @@
 		<link rel="stylesheet" href="src/style.css" />
 	</head>
 	<body>
-		<article class="slider-container l-dead-center js-slider">
+		<article class="slider-container l-dead-center" data-js-slider="root">
 			<div class="slider">
-				<button class="slider-arrow js-slider-arrow" data-action="prevImg">
+				<button
+					class="slider-arrow"
+					data-js-slider="arrow"
+					data-action="prevImg"
+				>
 					←
 				</button>
 				<img
-					class="slider-image js-slider-image"
-					src=""
-					alt="Sample"
+					class="slider-image is-selected"
+					data-js-slider="image"
+					src="images/01.jpeg"
 					width="512"
 					height="512"
 				/>
-				<button class="slider-arrow js-slider-arrow" data-action="nextImg">
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/02.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/03.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/04.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/05.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/06.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/07.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/08.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/09.jpeg"
+					width="512"
+					height="512"
+				/>
+				<img
+					class="slider-image"
+					data-js-slider="image"
+					src="images/10.jpeg"
+					width="512"
+					height="512"
+				/>
+				<button
+					class="slider-arrow"
+					data-js-slider="arrow"
+					data-action="nextImg"
+				>
 					→
 				</button>
 			</div>
 			<p class="slider-counter">
-				<span class="js-slider-count" data-value="imgN">--</span> из
-				<span class="js-slider-count" data-value="imgMaxN">--</span>
+				<span data-js-slider="count" data-value="imgN">--</span> из
+				<span data-js-slider="count" data-value="imgMaxN">--</span>
 			</p>
 		</article>
 	</body>

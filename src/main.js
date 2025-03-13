@@ -1,4 +1,4 @@
-const updateSliderCounter = (elems, props = { imgMaxN: "--", imgN: "--" }) => {
+const updateSliderCounter = (elems, props = {}) => {
 	elems.forEach((elem) => {
 		const key = elem.getAttribute("data-value");
 
@@ -9,32 +9,15 @@ const updateSliderCounter = (elems, props = { imgMaxN: "--", imgN: "--" }) => {
 };
 
 const initSlider = (root) => {
-	const imgElem = root.querySelector(".js-slider-image");
-	const arrowElems = root.querySelectorAll(".js-slider-arrow");
-	const countElems = root.querySelectorAll(".js-slider-count");
+	const imgElems = root.querySelectorAll("[data-js-slider='image']");
+	const arrowElems = root.querySelectorAll("[data-js-slider='arrow']");
+	const countElems = root.querySelectorAll("[data-js-slider='count']");
 
-	if (imgElem === null) return null;
-	if (arrowElems === null || arrowElems.length !== 2) return null;
-	if (countElems === null || countElems.length !== 2) return null;
-
-	const imgs = [
-		{ src: "", alt: "Image #1" },
-		{ src: "", alt: "Image #2" },
-		{ src: "", alt: "Image #3" },
-		{ src: "", alt: "Image #4" },
-		{ src: "", alt: "Image #5" },
-	];
-	const initialImgSrc = imgElem.getAttribute("src");
+	if (imgElems.length === 0) return null;
+	if (arrowElems.length !== 2) return null;
+	if (countElems.length !== 2) return null;
 
 	let imgIndex = 0;
-
-	// if the first img src here or in markup are different,
-	// then they're probably different pictures and we need
-	// to update the state to reflect the picture in the markup
-	if (initialImgSrc !== imgs[0].src) {
-		imgs[0].src = imgElem.getAttribute("src");
-		imgs[0].alt = imgElem.getAttribute("alt");
-	}
 
 	arrowElems.forEach((elem) => {
 		const key = elem.getAttribute("data-action");
@@ -47,16 +30,19 @@ const initSlider = (root) => {
 		elem.addEventListener("click", () => {
 			if (incr === null) return;
 
+			console.log(incr);
+
+			imgElems[imgIndex].classList.remove("is-selected");
+
 			imgIndex += incr;
 
-			if (imgIndex >= imgs.length) {
+			if (imgIndex >= imgElems.length) {
 				imgIndex = 0;
 			} else if (imgIndex < 0) {
-				imgIndex = imgs.length - 1;
+				imgIndex = imgElems.length - 1;
 			}
 
-			imgElem.setAttribute("src", imgs[imgIndex].src);
-			imgElem.setAttribute("alt", imgs[imgIndex].alt);
+			imgElems[imgIndex].classList.add("is-selected");
 
 			updateSliderCounter(countElems, { imgN: imgIndex + 1 });
 		});
@@ -64,8 +50,8 @@ const initSlider = (root) => {
 
 	updateSliderCounter(countElems, {
 		imgN: imgIndex + 1,
-		imgMaxN: imgs.length,
+		imgMaxN: imgElems.length,
 	});
 };
 
-document.querySelectorAll(".js-slider").forEach(initSlider);
+document.querySelectorAll("[data-js-slider='root']").forEach(initSlider);
