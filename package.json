@@ -1,0 +1,13 @@
+{
+	"name": "uni-practice-case-03",
+	"version": "0.1.0",
+	"scripts": {
+		"dev": "vite dev",
+		"preview": "vite preview",
+		"build": "vite build"
+	},
+	"devDependencies": {
+		"vite": "^6.2.1"
+	},
+	"license": "MIT"
+}
