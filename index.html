@@ -7,7 +7,27 @@
 		<link rel="stylesheet" href="src/style.css" />
 	</head>
 	<body>
-		<h1>Hello, World!</h1>
+		<article class="slider-container l-dead-center js-slider">
+			<div class="slider">
+				<button class="slider-arrow js-slider-arrow" data-action="prevImg">
+					←
+				</button>
+				<img
+					class="slider-image js-slider-image"
+					src=""
+					alt="Sample"
+					width="512"
+					height="512"
+				/>
+				<button class="slider-arrow js-slider-arrow" data-action="nextImg">
+					→
+				</button>
+			</div>
+			<p class="slider-counter">
+				<span class="js-slider-count" data-value="imgN">--</span> из
+				<span class="js-slider-count" data-value="imgMaxN">--</span>
+			</p>
+		</article>
 	</body>
 	<script src="src/main.js" type="module"></script>
 </html>
