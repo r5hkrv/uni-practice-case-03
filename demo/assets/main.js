@@ -1,4 +1,4 @@
-import Slider from "./slider";
+import Slider from "slider/index.js";
 
 Slider({
 	root: "[data-js-slider='root']",
