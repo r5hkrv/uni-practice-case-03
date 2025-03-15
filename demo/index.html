@@ -4,101 +4,56 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Image Slider</title>
-		<link rel="stylesheet" href="assets/style.css" />
+		<style>
+			html {
+				background-color: oklch(1 0 0);
+
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 1rem;
+			}
+
+			body {
+				margin: 0px;
+			}
+
+			.l-dead-center {
+				width: min-content;
+				height: min-content;
+
+				margin: auto;
+
+				position: absolute;
+				inset: 0px;
+			}
+		</style>
 	</head>
 	<body>
-		<article class="slider-container l-dead-center" data-js-slider="root">
-			<div class="slider">
-				<button
-					class="slider-arrow"
-					data-js-slider="arrow"
-					data-action="prevImg"
-				>
-					←
-				</button>
+		<article class="l-dead-center" data-slider="root">
+			<button data-slider="arrow-prev">←</button>
+			<button data-slider="arrow-next">→</button>
+			<div data-slider="slides">
 				<img
-					class="slider-image is-selected"
-					data-js-slider="image"
 					src="images/01.jpeg"
+					data-slider="selection"
 					width="512"
 					height="512"
 				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/02.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/03.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/04.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/05.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/06.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/07.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/08.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/09.jpeg"
-					width="512"
-					height="512"
-				/>
-				<img
-					class="slider-image"
-					data-js-slider="image"
-					src="images/10.jpeg"
-					width="512"
-					height="512"
-				/>
-				<button
-					class="slider-arrow"
-					data-js-slider="arrow"
-					data-action="nextImg"
-				>
-					→
-				</button>
+				<img src="images/02.jpeg" width="512" height="512" />
+				<img src="images/03.jpeg" width="512" height="512" />
+				<img src="images/04.jpeg" width="512" height="512" />
+				<img src="images/05.jpeg" width="512" height="512" />
+				<img src="images/06.jpeg" width="512" height="512" />
+				<img src="images/07.jpeg" width="512" height="512" />
+				<img src="images/08.jpeg" width="512" height="512" />
+				<img src="images/09.jpeg" width="512" height="512" />
+				<img src="images/10.jpeg" width="512" height="512" />
 			</div>
-			<p class="slider-counter">
-				<span data-js-slider="count" data-value="imgN">--</span> из
-				<span data-js-slider="count" data-value="imgMaxN">--</span>
-			</p>
 		</article>
+		<script type="module">
+			import "slider/styles.css";
+			import Slider from "slider/index.js";
+
+			document.querySelectorAll("[data-slider='root']").forEach(Slider);
+		</script>
 	</body>
-	<script src="assets/main.js" type="module"></script>
 </html>
