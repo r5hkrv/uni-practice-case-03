@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Image Slider</title>
+		<style>
+			html {
+				background-color: oklch(1 0 0);
+
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 1rem;
+			}
+
+			body {
+				margin: 0px;
+			}
+
+			.l-dead-center {
+				width: min-content;
+				height: min-content;
+
+				margin: auto;
+
+				position: absolute;
+				inset: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<article class="l-dead-center" data-slider="root">
+			<button data-slider="arrow@prev">←</button>
+			<button data-slider="arrow@next">→</button>
+			<div data-slider="slides">
+				<img
+					src="images/01.jpeg"
+					data-slider="selection"
+					width="512"
+					height="512"
+				/>
+				<img src="images/02.jpeg" width="512" height="512" />
+				<img src="images/03.jpeg" width="512" height="512" />
+				<img src="images/04.jpeg" width="512" height="512" />
+				<img src="images/05.jpeg" width="512" height="512" />
+				<img src="images/06.jpeg" width="512" height="512" />
+				<img src="images/07.jpeg" width="512" height="512" />
+				<img src="images/08.jpeg" width="512" height="512" />
+				<img src="images/09.jpeg" width="512" height="512" />
+				<img src="images/10.jpeg" width="512" height="512" />
+			</div>
+		</article>
+		<script type="module">
+			import "slider/styles.css";
+			import { useSliderSelectors, initSlider } from "slider";
+
+			const { rootSelector } = useSliderSelectors();
+
+			document.querySelectorAll(rootSelector).forEach(initSlider);
+		</script>
+	</body>
+</html>
