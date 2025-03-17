@@ -1,4 +1,5 @@
 import { defineEmits } from "./emits";
+import { hook } from "./hook";
 
 const getSliderSelector = (key) => `[data-slider="${key}"]`;
 
@@ -41,13 +42,11 @@ export const initSlider = (rootElem = null) => {
 		if (imgIndex > imgElems.length - 1) imgIndex = 0;
 	});
 
-	arrowElems.forEach((elem) => {
-		elem.addEventListener("click", (e) => {
-			imgElems[imgIndex].removeAttribute("data-slider");
+	hook(arrowElems, "click", (e) => {
+		imgElems[imgIndex].removeAttribute("data-slider");
 
-			emits.$(e.target);
+		emits.$(e.target);
 
-			imgElems[imgIndex].setAttribute("data-slider", "selection");
-		});
+		imgElems[imgIndex].setAttribute("data-slider", "selection");
 	});
 };
