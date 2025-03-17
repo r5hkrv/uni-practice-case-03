@@ -1,44 +1,53 @@
-const querySliderElem = (key, root = document) => {
-	return root.querySelector(`[data-slider="${key}"]`);
-};
+import { defineEmits } from "./emits";
 
-const Slider = (rootElem = querySliderElem("root")) => {
-	const prevArrowElem = querySliderElem("arrow-prev", rootElem);
-	const nextArrowElem = querySliderElem("arrow-next", rootElem);
-	const slidesElem = querySliderElem("slides", rootElem);
+const getSliderSelector = (key) => `[data-slider="${key}"]`;
+
+export const useSliderSelectors = () => ({
+	rootSelector: getSliderSelector("root"),
+
+	arrowSelectors: ["arrow@prev", "arrow@next"].map(getSliderSelector),
+
+	slidesSelector: getSliderSelector("slides"),
+});
+
+export const initSlider = (rootElem = null) => {
+	const { arrowSelectors, slidesSelector } = useSliderSelectors();
 
 	if (rootElem === null) return;
-	if (!rootElem.hasAttribute("[data-slider='root']")) return;
-	if (prevArrowElem === null || nextArrowElem === null) return;
-	if (slidesElem === null || slidesElem.children.length === 0) return;
+	if (!(rootElem instanceof Element)) return;
+
+	const arrowElems = rootElem.querySelectorAll(arrowSelectors);
+	const slidesElem = rootElem.querySelector(slidesSelector);
+
+	if (arrowElems.length === 0) return;
 
 	const imgElems = slidesElem.children;
 
+	if (slidesElem === null || imgElems.length === 0) return;
+
+	const emits = defineEmits("slider", ["prev", "next"]);
+
 	let imgIndex = 0;
 
-	prevArrowElem.addEventListener("click", () => {
-		imgElems[imgIndex].removeAttribute("data-slider");
-
+	emits.on("prev", () => {
 		imgIndex -= 1;
 
-		if (imgIndex < 0) {
-			imgIndex = imgElems.length - 1;
-		}
-
-		imgElems[imgIndex].setAttribute("data-slider", "selection");
+		if (imgIndex < 0) imgIndex = imgElems.length - 1;
 	});
 
-	nextArrowElem.addEventListener("click", () => {
-		imgElems[imgIndex].removeAttribute("data-slider");
-
+	emits.on("next", () => {
 		imgIndex += 1;
 
-		if (imgIndex > imgElems.length - 1) {
-			imgIndex = 0;
-		}
+		if (imgIndex > imgElems.length - 1) imgIndex = 0;
+	});
 
-		imgElems[imgIndex].setAttribute("data-slider", "selection");
+	arrowElems.forEach((elem) => {
+		elem.addEventListener("click", (e) => {
+			imgElems[imgIndex].removeAttribute("data-slider");
+
+			emits.$(e.target);
+
+			imgElems[imgIndex].setAttribute("data-slider", "selection");
+		});
 	});
 };
-
-export default Slider;

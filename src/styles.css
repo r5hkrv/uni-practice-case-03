@@ -11,8 +11,8 @@
 	grid-column: 2 / 3;
 }
 
-[data-slider="arrow-prev"],
-[data-slider="arrow-next"] {
+[data-slider="arrow@prev"],
+[data-slider="arrow@next"] {
 	width: 60px;
 	height: 60px;
 
@@ -33,17 +33,17 @@
 	transition: background-color 150ms;
 }
 
-[data-slider="arrow-prev"]:hover,
-[data-slider="arrow-next"]:hover {
+[data-slider="arrow@prev"]:hover,
+[data-slider="arrow@next"]:hover {
 	background-color: rgb(0, 0, 0, 0.05);
 }
 
-[data-slider="arrow-prev"] {
+[data-slider="arrow@prev"] {
 	grid-row: 1;
 	grid-column: 1;
 }
 
-[data-slider="arrow-next"] {
+[data-slider="arrow@next"] {
 	grid-row: 1;
 	grid-column: 3;
 }

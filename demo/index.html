@@ -29,8 +29,8 @@
 	</head>
 	<body>
 		<article class="l-dead-center" data-slider="root">
-			<button data-slider="arrow-prev">←</button>
-			<button data-slider="arrow-next">→</button>
+			<button data-slider="arrow@prev">←</button>
+			<button data-slider="arrow@next">→</button>
 			<div data-slider="slides">
 				<img
 					src="images/01.jpeg"
@@ -51,9 +51,11 @@
 		</article>
 		<script type="module">
 			import "slider/styles.css";
-			import Slider from "slider/index.js";
+			import { useSliderSelectors, initSlider } from "slider/index";
 
-			document.querySelectorAll("[data-slider='root']").forEach(Slider);
+			const { rootSelector } = useSliderSelectors();
+
+			document.querySelectorAll(rootSelector).forEach(initSlider);
 		</script>
 	</body>
 </html>
