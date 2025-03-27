@@ -42,6 +42,12 @@ export const initSlider = (rootElem = null) => {
 		if (imgIndex > imgElems.length - 1) imgIndex = 0;
 	});
 
+	Array.from(imgElems).forEach((elem, i) => {
+		if (elem.getAttribute("data-slider") !== "selection") return;
+
+		imgIndex = i;
+	});
+
 	hook(arrowElems, "click", (e) => {
 		imgElems[imgIndex].removeAttribute("data-slider");
 
